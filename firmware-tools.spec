@@ -2,7 +2,7 @@ Name:           firmware-tools
 Version:        1.5.6
 Release:        %mkrel 1
 Summary:        Scripts and tools to manage firmware and BIOS updates
-Group:          Applications/System
+Group:          System/Kernel and hardware
 License:        GPLv2+ or OSL
 URL:            http://linux.dell.com/libsmbios/download/ 
 Source0:        http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
