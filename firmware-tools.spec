@@ -1,6 +1,6 @@
 Name:           firmware-tools 
 Version:        1.5.6
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        Scripts and tools to manage firmware and BIOS updates
 Group:          System/Kernel and hardware
 License:        GPLv2+ or OSL
@@ -20,6 +20,8 @@ a framework for BIOS and firmware updates.
 
 %prep
 %setup -q
+
+find . -type f | xargs perl -pi -e 's|#!/usr/bin/python2|#!/usr/bin/python|'
 
 %build
 %{__python} setup.py build
