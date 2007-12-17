@@ -9,7 +9,6 @@ Source0:        http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{versi
 BuildRequires:  python-devel
 Requires:       rpm-python
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 The firmware-tools project provides tools to inventory hardware and a plugin
