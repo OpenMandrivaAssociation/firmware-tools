@@ -1,6 +1,6 @@
 Name:           firmware-tools 
 Version:        1.5.6
-Release:        %mkrel 4
+Release:        %mkrel 5
 Summary:        Scripts and tools to manage firmware and BIOS updates
 Group:          System/Kernel and hardware
 License:        GPLv2+ or OSL
