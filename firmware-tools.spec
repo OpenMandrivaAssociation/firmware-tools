@@ -1,15 +1,15 @@
-Name:           firmware-tools 
-Version:        1.5.6
-Release:        %mkrel 5
-Summary:        Scripts and tools to manage firmware and BIOS updates
-Group:          System/Kernel and hardware
-License:        GPLv2+ or OSL
-URL:            http://linux.dell.com/libsmbios/download/ 
-Source0:        http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  python-devel
-Requires:       rpm-python
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
+Name:		firmware-tools
+Version:	2.1.5
+Release:	%mkrel 1
+Summary:	Scripts and tools to manage firmware and BIOS updates
+Group:		System/Kernel and hardware
+License:	GPLv2+
+URL:		http://linux.dell.com/libsmbios/download/ 
+Source0:	http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
+BuildRequires:	python-devel
+Requires:	rpm-python
+BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The firmware-tools project provides tools to inventory hardware and a plugin
@@ -24,11 +24,13 @@ a framework for BIOS and firmware updates.
 find . -type f | xargs perl -pi -e 's|#!/usr/bin/python2|#!/usr/bin/python|'
 
 %build
-%{__python} setup.py build
+%configure2_5x
+
+%make
 
 %install
 rm -rf %{buildroot}
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+%makeinstall_std
 mkdir -p %{buildroot}/%{_sysconfdir}/firmware/firmware.d/
 mkdir -p %{buildroot}/%{_datadir}/firmware
 
@@ -39,11 +41,9 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc COPYING-GPL COPYING-OSL README
 %{python_sitelib}/*
-%{_bindir}/*
+%{_sbindir}/*
 %{_datadir}/firmware-tools/
 %dir %{_sysconfdir}/firmware
 %dir %{_sysconfdir}/firmware/firmware.d
 %config(noreplace) %{_sysconfdir}/firmware/firmware.conf
 %{_datadir}/firmware/
-
-
