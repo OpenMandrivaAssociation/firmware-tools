@@ -1,15 +1,14 @@
 Name:		firmware-tools
 Version:	2.1.14
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	Scripts and tools to manage firmware and BIOS updates
 Group:		System/Kernel and hardware
 License:	GPLv2+
 URL:		http://linux.dell.com/libsmbios/download/ 
 Source0:	http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	python-devel
-Requires:	rpm-python
+Requires:	python-rpm
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The firmware-tools project provides tools to inventory hardware and a plugin
@@ -29,16 +28,11 @@ find . -type f | xargs perl -pi -e 's|#!/usr/bin/python2|#!/usr/bin/python|'
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 mkdir -p %{buildroot}/%{_sysconfdir}/firmware/firmware.d/
 mkdir -p %{buildroot}/%{_datadir}/firmware
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc COPYING-GPL COPYING-OSL README
 %{python_sitelib}/*
 %{_sbindir}/*
