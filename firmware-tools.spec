@@ -4,7 +4,7 @@ Release:	3
 Summary:	Scripts and tools to manage firmware and BIOS updates
 Group:		System/Kernel and hardware
 License:	GPLv2+
-URL:		http://linux.dell.com/libsmbios/download/ 
+URL:		https://linux.dell.com/libsmbios/download/ 
 Source0:	http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	python-devel
 Requires:	python-rpm
